@@ -1,0 +1,138 @@
+﻿@model HRMS.Models.HrmsUserAttendanceViewModel
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="background:gray">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="exampleModalCenterTitle">Hrms_User_Attendance</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("Index", "HrmsUserLeaveController", FormMethod.Post))
+            {
+
+                <div class="modal-body " style="font-size: 15px;">
+                    <div class="row" style="padding-left:15px;">
+                        <div class="col-sm-6">
+                            <a href="@Url.Action("SaveAttedance", "HrmUserAttendance", new { UserID = @TempData["temp"], InTime = "In" })" id="clickok">In-Time</a><br />
+                            <span id="timevalue" value="@TempData["InTime"]">Your In-Time is:- @TempData["InTime"]</span>
+                            <br />
+                        </div>
+                        <div class="col-sm-6" style="padding-left:15px">
+                            <a href="#" class="btn-get-approval" id="Approvel123" data-action="In" style="font-size:15px">Get-In_Approvel</a>
+
+                        </div>
+
+                    </div>
+
+
+                    @*<a href="#" class="nav-link" id="Approvel123">Get-Approvel</a>*@
+                    @*<a href="#" id="Approvel123" style="font-size:24px">Get-In_Approvel</a><br><hr>
+                        <a href="#" id="Approvel" style="font-size:24px">Get-Out_Approvel</a>*@
+
+                    <div class="row" style="padding-left:15px;">
+                        <div class="col-sm-6">
+
+                            <a href="@Url.Action("SaveAttedance", "HrmUserAttendance", new { UserID = @TempData["temp"], InTime = "Out" })" id="click123">Out-Time</a><br />
+                        </div>
+                        <div class="col-sm-6" style="padding-left:15px;">
+                            <a href="#" class="btn-get-approval" id="Approvel124" data-action="Out" style="font-size:15px">Get-Out_Approvel</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <a href="~/HrmsEmpDashboard/GetAttendanceIndex" class="btn btn-success">Continue</a>
+                    <a href="~/HrmsUserRegistration/Logout" class="btn btn-danger">Logout</a>
+
+                </div>
+            }
+        </div>
+
+
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="AddEmployee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+                <div class="modal-header" style="background-color:cadetblue ">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Modal Small Size -->
+
+<div class="modal fade" id="ClickAttendanceApprovel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+                <div class="modal-header" style="background-color:cadetblue ">
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+@section scripts {
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery-min.js"></script>
+    <script src="~/Scripts/HrmsEmployeeDetails/HrmsEmployeeDetails.js"></script>
+    <script src="~/Scripts/HrmsAttendance/HrmsAttendance.js"></script>
+    <script src="~/Scripts/HrmsLeave/Leave.js"></script>
+    <script src="~/Scripts/HrmsLocation/Location.js"></script>
+    <script src="~/Scripts/HrmsDepartment/Department.js"></script>
+    <script src="~/Scripts/HrmsAccessoire/Accessoire.js"></script>
+    <script src="~/Scripts/HrmsRole/Role.js"></script>
+  
+}
+
+
+<script type="text/javascript">
+    $(window).on('load', function () {
+        $('#myModal').modal('show');
+        var demo = $('#timevalue').attr('value');
+        console.log(demo);
+        if (demo != null || demo != undefined) {
+
+            $('#clickok').hide();
+            $('#click123').show();
+            $('#Approvel123').hide();
+        }
+        else {
+            $('#clickok').show();
+            $('#click123').hide();
+            $('#Approvel124').hide();
+
+        }
+
+
+    });
+</script>

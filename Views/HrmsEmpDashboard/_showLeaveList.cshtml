@@ -1,0 +1,40 @@
+﻿@model HRMS.Models.HrmsLeaveViewModel
+
+
+
+<div>
+    @Html.Partial("_showLeaveList")
+</div>
+
+
+<div class="card">
+    <h3> Leave Details</h3><hr />
+    <table class="table table-striped table-condensed">
+        <thead>
+            <tr>
+                <th>EMP_ID</th>
+                <th>TYPE_LEAVE</th>
+                <th>Apply_Total_Leave</th>
+                <th>Reason_for_Leave</th>
+                <th>Leave_To_Date</th>
+                <th>Leave_from_Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.hrmsLeaveViewModels)
+            {
+                <tr>
+                    <td>@item.Emp_Id</td>
+                    <td>@item.TYPE_LEAVE</td>
+                    <td>@item.APPLIED_TOTAL_LEAVE</td>
+                    <td>@item.REASON_FOR_LEAVE</td>
+                    <td>@item.LEAVE_FROM_DATE.ToString("dd/MM/yyyy")</td>
+                    <td>@item.LEAVE_TO_DATE.ToString("dd/MM/yyyy")</td>
+
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>

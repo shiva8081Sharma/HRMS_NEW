@@ -1,0 +1,86 @@
+﻿@model HRMS.Models.HrmsLeaveViewModel
+
+
+@using (Html.BeginForm("SaveEmpApplyLeave", "HrmsUserLeave", FormMethod.Post, htmlAttributes: new { @id = "form-Get-Approvel-Attendance" }))
+{
+
+    <div class="form-group" style="display:none">
+
+        <div class="col-md-12">
+
+            <label class=" col-md-2">Emp_Id</label>
+            @Html.TextBoxFor(model => model.Emp_Id, new { @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.Emp_Id, "", new { @class = "text-danger" })
+        </div>
+
+
+
+    </div>
+    <div class="col-md-12">
+
+        <label class=" col-md-2">TYPE_LEAVE</label>
+        @Html.DropDownListFor(x => Model.TYPE_LEAVE, new SelectList(ViewBag.LeaveDropdwon, "Id", "TYPE_LEAVE"), "Please select ", new { @class = "form-control", })
+
+    </div>
+    <div class="form-group">
+
+        <div class="col-md-12">
+
+            <label class=" col-md-2">APPLIED_TOTAL_LEAVE</label>
+
+            @Html.TextBoxFor(model => model.APPLIED_TOTAL_LEAVE, new { @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.APPLIED_TOTAL_LEAVE, "", new { @class = "text-danger" })
+        </div>
+
+    </div>
+
+    <div class="form-group">
+
+        <div class="col-md-12">
+
+            <label class=" col-md-2">Reason</label>
+
+            @Html.TextBoxFor(model => model.REASON_FOR_LEAVE, new { @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.REASON_FOR_LEAVE, "", new { @class = "text-danger" })
+        </div>
+
+    </div>
+
+    <div class="form-group">
+
+        <div class="col-md-12">
+
+            <label class=" col-md-2">Leave_from_Date</label>
+
+            @Html.TextBoxFor(model => model.LEAVE_FROM_DATE, new { @class = "form-control ", type = "Date" })
+            @Html.ValidationMessageFor(model => model.LEAVE_FROM_DATE, "", new { @class = "text-danger" })
+        </div>
+
+    </div>
+
+    <div class="form-group">
+
+        <div class="col-md-12">
+
+            <label class=" col-md-2">Leave_To_Date</label>
+
+            @Html.TextBoxFor(model => model.LEAVE_TO_DATE, new { @class = "form-control ", type = "Date" })
+            @Html.ValidationMessageFor(model => model.LEAVE_TO_DATE, "", new { @class = "text-danger" })
+        </div>
+
+    </div>
+
+
+
+
+    <div class="form-group btn-buttn" style="margin-top:4%; margin-left:80%">
+        <button type="submit" class="btn btn-success" id="submitbutton">Submit</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Close</button>
+    </div>
+
+
+}
+<script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/HrmsLeave/Leave.js"></script>

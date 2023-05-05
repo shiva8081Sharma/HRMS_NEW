@@ -1,0 +1,51 @@
+﻿using HRMS.Models;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
+
+namespace HRMS.Repository
+{
+    public class UserLocationRepo
+    {
+        SqlConnection conn = null;
+
+        #region[Constructor-Using Connection-string]
+        public UserLocationRepo()
+        {
+
+
+            string connStr = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
+            conn = new SqlConnection(connStr);
+
+        }
+        #endregion
+        public int SaveLocation(HrmsLocationViewModel model)
+
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "LOCATION_SP"; // Store procediure name
+            cmd.Parameters.Add("@LOCATION_NAME", SqlDbType.NVarChar).Value = model.Name;
+            cmd.Connection = conn;
+            try
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return 0;
+
+        }
+    }
+
+}

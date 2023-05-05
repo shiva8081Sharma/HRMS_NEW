@@ -1,0 +1,30 @@
+﻿@model HRMS.Models.HrmsLeaveViewModel
+
+
+@using (Html.BeginForm("SaveLeave", "HrmsUserLeave", FormMethod.Post, htmlAttributes: new { @id = "form-Get-Approvel-Attendance" }))
+{
+
+    <div class="form-group">
+
+        <div class="col-md-12">
+
+            <label class=" col-md-2">Leave_Type</label>
+
+            @Html.TextBoxFor(model => model.TYPE_LEAVE, new { @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.TYPE_LEAVE, "", new { @class = "text-danger" })
+        </div>
+
+    </div>
+
+
+    <div class="form-group btn-buttn" style="margin-top:4%; margin-left:80%">
+        <button type="submit" class="btn btn-success" id="submitbutton">Submit</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Close</button>
+    </div>
+
+
+}
+<script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/HrmsLeave/Leave.js"></script>
