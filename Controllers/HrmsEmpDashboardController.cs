@@ -74,7 +74,6 @@ namespace HRMS.Controllers
         #region[This Method Use for Reject_Approvel_Attendance]
         public ActionResult RejectApprovel(string Emp_Id, int Id)
         {
-
             EmpDashboardRepo empDashboardRepo = new EmpDashboardRepo();
             int i = empDashboardRepo.Reject_Approvel_Attendace(Emp_Id, Id);
 
