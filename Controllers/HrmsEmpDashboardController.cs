@@ -76,7 +76,6 @@ namespace HRMS.Controllers
         {
             EmpDashboardRepo empDashboardRepo = new EmpDashboardRepo();
             int i = empDashboardRepo.Reject_Approvel_Attendace(Emp_Id, Id);
-
             return RedirectToAction("GetAttendanceIndex", "HrmsEmpDashboard");
         }
         #endregion
